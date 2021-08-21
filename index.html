@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRESS-SHOP</title>
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+    <nav id="menu">
+        <ul>
+            <li><a href="#">Sección 1</a></li>
+        </ul>
+    </nav>    
+    <section class="vids">
+        <video id="video1" class="vid" src="video/video1.mp4" type="video/mp4" autoplay muted loop>
+          Your browser does not support the video tag.            
+        </video>        
+        <!-- <video id="video3" class="vid"  autoplay muted loop>
+            <source src="video/video2.mp4" type="video/mp4">
+          Your browser does not support the video tag.            
+        </video>         -->
+    </section>    
+
+    <script>
+ 
+
+        // Retorna un entero aleatorio entre min (incluido) y max (excluido)
+        // ¡Usando Math.round() te dará una distribución no-uniforme!
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        function func(vid){
+            const $vids = document.querySelector(".vids");
+            
+            $newVid = document.createElement("video");
+            $newVid.setAttribute('id', vid);
+            $newVid.muted = true;
+            $newVid.autoplay = true;
+            $newVid.loop = true;
+
+            $source = document.createElement('source');
+            $source.setAttribute('src', `video/${vid}.mp4`); // "video/"+vid+".mp4"
+            $source.setAttribute('type', 'video/mp4');
+            $newVid.appendChild($source);
+
+            $newVid.classList.add("vid");
+            $source.innerHTML = `
+                Your browser does not support the video tag. 
+            `;
+            $vids.replaceChild($newVid,$vids.children[0]);
+            $vids.children[0].load();
+            $vids.children[0].play();
+        }
+
+        function func1(){
+            const $vids = document.querySelector(".vids");
+            
+            $newVid = document.createElement("video");
+            $newVid.setAttribute('id', 'video1');
+            $newVid.muted = true;
+            $newVid.autoplay = true;
+            $newVid.loop = true;
+
+            $source = document.createElement('source');
+            $source.setAttribute('src', 'video/video1.mp4');
+            $source.setAttribute('type', 'video/mp4');
+            $newVid.appendChild($source);
+
+            $newVid.classList.add("vid");
+            $source.innerHTML = `
+                Your browser does not support the video tag. 
+            `;
+
+            $vids.replaceChild($newVid,$vids.children[0]);
+            $vids.children[0].load();
+            $vids.children[0].play();
+        }
+
+        function func2(){
+            const $vids = document.querySelector(".vids");
+            
+            $newVid = document.createElement("video");
+            $newVid.setAttribute('id', 'video2');
+            $newVid.muted = true;
+            $newVid.autoplay = true;
+            $newVid.loop = true;
+
+            $source = document.createElement('source');
+            $source.setAttribute('src', 'video/video2.mp4');
+            $source.setAttribute('type', 'video/mp4');
+            $newVid.appendChild($source);
+
+            $newVid.classList.add("vid");
+            $source.innerHTML = `
+                Your browser does not support the video tag. 
+            `;
+
+            $vids.replaceChild($newVid,$vids.children[0]);
+            $vids.children[0].load();
+            $vids.children[0].play();
+        }
+
+        setInterval(() => {
+            const $vids = document.querySelector(".vids");
+            // if(getRandomInt(0, 2) == 0)
+            if($vids.children[0].id == 'video1')
+                func('video2')
+            else
+                func('video1')
+
+            console.log("Ejecutando un setInterval, esto se ejecuta indefinidaente cada cierto intervalo de tiempo");
+
+        }, 3000);           
+    </script>    
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+.vids {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.vid {
+  width: 320px;
+  height: 240px;
+}
